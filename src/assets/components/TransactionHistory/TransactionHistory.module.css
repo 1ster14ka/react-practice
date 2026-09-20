@@ -1,0 +1,18 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 2px solid black;
+}
+
+th,
+td {
+  border: 2px solid black;
+}
+
+tr th {
+  background-color: gray;
+  color: white;
+}
+.tableRow:nth-child(even) {
+  background-color: lightgray;
+}

@@ -1,0 +1,37 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid black;
+  border-radius: 10px;
+  gap: 10px;
+  max-width: 250px;
+  margin: 0 auto;
+}
+
+.wrapperImg {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: black;
+}
+
+.img {
+  border-radius: 50%;
+  width: 250px;
+}
+
+.list {
+  display: flex;
+  width: 100%;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid grey;
+  padding: 5px;
+  flex-grow: 1;
+  background-color: lightgray;
+}
