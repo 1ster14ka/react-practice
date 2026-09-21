@@ -1,0 +1,15 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.wrapper button {
+  width: 100px;
+  height: 40px;
+}
+
+.feedbackWrapper {
+  display: flex;
+  gap: 20px;
+}
