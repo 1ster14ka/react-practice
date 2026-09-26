@@ -10,6 +10,18 @@ import Descriptions from "./Description/Description";
 import Options from "./Options/Options";
 import Feedback from "./Feedback/Feedback";
 import Notification from "./Notification/Notification";
+import LoginForm from "./LoginForm/LoginForm";
+import SearchBar from "./SearchBar";
+import LangSwitcher from "./LangSwitcher";
+import RadioButton from "./RadioButton";
+import Checkbox from "./Checkbox";
+import Form from "./Form";
+import Filter from "./Filter";
+import TaskList from "./TaskList";
+import FormikLearn from "./FormikLearn";
+import ContactForm from "./ContactForm/ContactForm";
+import SearchBox from "./SearchBox/SearchBox";
+import ContactList from "./ContactList/ContactList";
 
 function App() {
   const [isReset, setIsReset] = useState(false);
@@ -43,8 +55,43 @@ function App() {
     setIsReset(true);
   };
 
+  // Form
+
+  const [contacts, setContacts] = useState(() => {
+    const isContacts = window.localStorage.getItem("contacts");
+    if (isContacts !== null) {
+      return JSON.parse(isContacts);
+    }
+    return [];
+  });
+  const [value, setValue] = useState("");
+
+  useEffect(() => {
+    window.localStorage.setItem("contacts", JSON.stringify(contacts));
+  }, [contacts]);
+
+  const filterContacts = contacts.filter((contact) => {
+    return contact.name.toLowerCase().includes(value.toLowerCase());
+  });
+
+  const addContacts = (contact) => {
+    setContacts((prev) => [...prev, contact]);
+  };
+
+  const deleteContact = (id) =>
+    setContacts((prev) => prev.filter((contact) => contact.id !== id));
+
   return (
     <div>
+      <div>
+        <h2 className="title">Phonebook</h2>
+        <ContactForm addContacts={addContacts} />
+        <SearchBox filterInput={value} onFilterInput={setValue} />
+        <ContactList
+          contacts={filterContacts}
+          onDeleteContact={deleteContact}
+        />
+      </div>
       <Profile
         name={userData.username}
         tag={userData.tag}

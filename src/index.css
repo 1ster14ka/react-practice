@@ -1,5 +1,5 @@
 :root {
-  --text: #6b6375;
+  --text: #0f0f10;
   --text-h: #08060d;
   --bg: #fff;
   --border: #e5e4e7;
@@ -138,4 +138,9 @@ ol {
 img {
   display: block;
   max-width: 100%;
+}
+
+.title {
+  text-align: left;
+  margin-bottom: 40px;
 }

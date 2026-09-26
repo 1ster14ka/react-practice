@@ -1,0 +1,18 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 30px;
+}
+
+.text {
+  font-size: 20px;
+  color: black;
+}
+
+.filterInput {
+  width: 400px;
+  height: 30px;
+  background-color: white;
+  color: black;
+}
