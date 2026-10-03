@@ -14,13 +14,13 @@ import ContactForm from "./ContactForm/ContactForm";
 import SearchBox from "./SearchBox/SearchBox";
 import ContactList from "./ContactList/ContactList";
 import { FaPlayCircle, FaPauseCircle } from "react-icons/fa";
-import SearchBar from "./SearchBar/SearchBar";
 import { fetchImgGallery } from "../../gallery-img";
 import ImageGallery from "./ImageGallery/ImageGallery";
 import LoadMoreBtn from "./LoadMoreBtn/LoadMoreBtn";
 import Loader from "./Loader/Loader";
 import ErrorMessage from "./ErrorMessage/ErrorMessage";
 import ImageModal from "./ImageModal/ImageModal";
+import Films from "./Films/Films/Films";
 function App() {
   const [isReset, setIsReset] = useState(false);
 
@@ -103,7 +103,7 @@ function App() {
   const [modalImg, setModalImg] = useState({});
 
   useEffect(() => {
-    if (query === "") {
+    if (!query.trim()) {
       return;
     }
     const searchQuery = async () => {
@@ -142,9 +142,10 @@ function App() {
   const closeModal = () => {
     setIsOpen(false);
   };
+
   return (
     <div>
-      <SearchBar onSubmit={handleSubmit} />
+      <Films />
       {galleryImg.length > 0 && (
         <>
           <ImageGallery galleryData={galleryImg} onOpenModal={OpenModal} />
