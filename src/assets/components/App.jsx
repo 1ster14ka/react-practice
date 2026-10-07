@@ -21,6 +21,7 @@ import Loader from "./Loader/Loader";
 import ErrorMessage from "./ErrorMessage/ErrorMessage";
 import ImageModal from "./ImageModal/ImageModal";
 import Films from "./Films/Films/Films";
+import MainTasksScheduler from "./TasksScheduler/MainTasksScheduler/MainTasksScheduler";
 function App() {
   const [isReset, setIsReset] = useState(false);
 
@@ -54,30 +55,6 @@ function App() {
   };
 
   // Form
-
-  const [contacts, setContacts] = useState(() => {
-    const isContacts = window.localStorage.getItem("contacts");
-    if (isContacts !== null) {
-      return JSON.parse(isContacts);
-    }
-    return [];
-  });
-  const [value, setValue] = useState("");
-
-  useEffect(() => {
-    window.localStorage.setItem("contacts", JSON.stringify(contacts));
-  }, [contacts]);
-
-  const filterContacts = contacts.filter((contact) => {
-    return contact.name.toLowerCase().includes(value.toLowerCase());
-  });
-
-  const addContacts = (contact) => {
-    setContacts((prev) => [...prev, contact]);
-  };
-
-  const deleteContact = (id) =>
-    setContacts((prev) => prev.filter((contact) => contact.id !== id));
 
   //  useRef
 
@@ -145,6 +122,7 @@ function App() {
 
   return (
     <div>
+      <MainTasksScheduler />
       <Films />
       {galleryImg.length > 0 && (
         <>
@@ -165,12 +143,9 @@ function App() {
 
       <div>
         <h2 className="title">Phonebook</h2>
-        <ContactForm addContacts={addContacts} />
-        <SearchBox filterInput={value} onFilterInput={setValue} />
-        <ContactList
-          contacts={filterContacts}
-          onDeleteContact={deleteContact}
-        />
+        <ContactForm />
+        <SearchBox />
+        <ContactList />
       </div>
       <Profile
         name={userData.username}

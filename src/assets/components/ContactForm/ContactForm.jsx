@@ -1,8 +1,10 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import s from "./ContactForm.module.css";
+import { useDispatch } from "react-redux";
+import { addContact } from "../redux/contactsSlice";
 
-const ContactForm = ({ addContacts }) => {
+const ContactForm = () => {
   const contactSchema = Yup.object().shape({
     name: Yup.string()
       .min(3, "Too short")
@@ -12,10 +14,10 @@ const ContactForm = ({ addContacts }) => {
       .matches(/^\d{9}$/, "Number must contain exactly 9 digits")
       .required("Required"),
   });
+  const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
-    // console.log(values);
-    addContacts({ ...values, id: crypto.randomUUID() });
+    dispatch(addContact({ ...values, id: crypto.randomUUID() }));
     actions.resetForm();
   };
   return (

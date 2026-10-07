@@ -1,0 +1,12 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px;
+  /* text-align: left; */
+}
+
+.item {
+  display: flex;
+  height: 50px;
+}
